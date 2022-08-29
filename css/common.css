@@ -22,19 +22,3 @@ button {
   padding: 8px 12px;
   cursor: pointer;
 }
-
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-
-  list-style: none;
-  
-}
-
-.gallery>li {
-  
-    flex-basis: calc((100% - 5px * 2)/ 3);
-}
-
-
