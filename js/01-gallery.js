@@ -44,16 +44,23 @@ function onGalleryContainerClick(evt) {
 
   const modal = basicLightbox.create(`
     <img src = "${doBigImageEl}"  width = "100%" height = "100%"/>
-`);
-  modal.show();
-  //if (evt.currentTarget === evt.target) { modal.close(); };
-//закриття модального вікна після натискання клавіші Escape
-  window.addEventListener('keydown', onEscKeyPress);
-  function onEscKeyPress(evt) {
-    const ECS_KEY_CODE = 'Escape';
-    if (evt.code === ECS_KEY_CODE) {
-      modal.close();
+`, {
+    onShow: modal => {
+    window.addEventListener('keydown', onEscKeyPress);
+    
+    },
+    onClose: modal => {
       window.removeEventListener('keydown', onEscKeyPress);
-    }
+
+    },
+  }
+  );
+ modal.show();
+
+ function onEscKeyPress(evt) {
+  const ECS_KEY_CODE = 'Escape';
+  if (evt.code === ECS_KEY_CODE) {
+   modal.close();
+  }
   };
 }
